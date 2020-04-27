@@ -5,10 +5,11 @@
 # 截图预览（Screen Recrod）
 <img  width = "450" src = "https://github.com/bigdongdong/RegularPolygonView/blob/master/preview/pre.jpg"></img></br>
 
+<!--
 # demo下载
 右击 -> 链接另存为</br>
 [regularpolygonview.apk](https://github.com/bigdongdong/RegularPolygonView/blob/master/preview/regularpolygonview.apk)</br></br>
-
+-->
 # 项目配置
 
 ```
