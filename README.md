@@ -41,7 +41,6 @@
 |rpv:border_width|边框宽度|
 |rpv:border_color|边框颜色|
 |rpv:round_radius|圆角半径|
-|rpv:arrow_width|箭头的宽度|
 
 # 特殊说明
 该ImageView 内部强制使用ScaleType.CENTER_CROP作为适配方案
