@@ -3,7 +3,7 @@
 
 
 # 截图预览（Screen Recrod）
-<img  width = "450" src = "https://github.com/bigdongdong/RegularPolygonView/blob/master/preview/preview.jpg"></img></br>
+<img  width = "450" src = "https://github.com/bigdongdong/RegularPolygonView/blob/master/preview/pre.jpg"></img></br>
 
 # 项目配置
 
