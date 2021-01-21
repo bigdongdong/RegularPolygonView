@@ -21,8 +21,8 @@ public class RegularPolygonView extends android.support.v7.widget.AppCompatImage
     private int W , H ;
     private int mCount ; //几边形
     private int mRound ; //圆角半径
-    private int mBroderWidth ; //边框厚度
-    private int mBroderColor ; //边框颜色
+    private int mBorderWidth ; //边框厚度
+    private int mBorderColor ; //边框颜色
     private Vertex[] mVertexs ;
     private Vertex[] mStrokes ; //边框顶点集合
 
@@ -36,9 +36,33 @@ public class RegularPolygonView extends android.support.v7.widget.AppCompatImage
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.rpv);
         mRound = typedArray.getDimensionPixelSize(R.styleable.rpv_round_radius,0);
-        mBroderWidth = typedArray.getDimensionPixelSize(R.styleable.rpv_border_width,0);
-        mBroderColor = typedArray.getColor(R.styleable.rpv_border_color,Color.TRANSPARENT);
+        mBorderWidth = typedArray.getDimensionPixelSize(R.styleable.rpv_border_width,0);
+        mBorderColor = typedArray.getColor(R.styleable.rpv_border_color,Color.TRANSPARENT);
         mCount = typedArray.getInteger(R.styleable.rpv_sides,0);
+        if(mCount < 3){
+            mCount = 3 ;
+        }
+        mVertexs = new Vertex[mCount];
+        mStrokes = new Vertex[mCount];
+    }
+
+    /**
+     * 代码构造器
+     * @param context
+     * @param count
+     * @param round
+     * @param borderWidth
+     * @param borderColor
+     */
+    public RegularPolygonView(Context context, int count, int round, int borderWidth, int borderColor) {
+        super(context);
+        this.setScaleType(ScaleType.CENTER_CROP);
+
+        this.mCount = count;
+        this.mRound = round;
+        this.mBorderWidth = borderWidth;
+        this.mBorderColor = borderColor;
+
         if(mCount < 3){
             mCount = 3 ;
         }
@@ -92,10 +116,10 @@ public class RegularPolygonView extends android.support.v7.widget.AppCompatImage
      */
     private void fillStrokes(){
         float angle = -360 / mCount ;
-        Point vertex = new Point(W/2 , mBroderWidth / 2) ;
+        Point vertex = new Point(W/2 , mBorderWidth / 2) ;
         int h = (int) ((mRound/Math.sqrt(3))/2);
-        Point vertexL = new Point(W/2 - mRound/2 , h + mBroderWidth / 2);
-        Point vertexR = new Point(W/2 + mRound/2 , h + mBroderWidth / 2);
+        Point vertexL = new Point(W/2 - mRound/2 , h + mBorderWidth / 2);
+        Point vertexR = new Point(W/2 + mRound/2 , h + mBorderWidth / 2);
 
         for (int i = 0; i < mCount; i++) {
             Vertex v = new Vertex(i,
@@ -167,10 +191,10 @@ public class RegularPolygonView extends android.support.v7.widget.AppCompatImage
     private Paint getStrokePaint(){
         if(mStrokePaint == null){
             mStrokePaint = new Paint();
-            mStrokePaint.setColor(mBroderColor);
+            mStrokePaint.setColor(mBorderColor);
             mStrokePaint.setStyle(Paint.Style.STROKE);
             mStrokePaint.setAntiAlias(true);
-            mStrokePaint.setStrokeWidth(mBroderWidth);
+            mStrokePaint.setStrokeWidth(mBorderWidth);
         }
         return mStrokePaint;
     }
